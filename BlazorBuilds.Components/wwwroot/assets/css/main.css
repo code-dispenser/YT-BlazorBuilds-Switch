@@ -1,0 +1,71 @@
+﻿:root {
+  --focus-clr: rgb(128,0,128);
+}
+
+.switch {
+  --animation-ms: 100ms;
+  --rocker-track: rgb(204, 204, 204);
+  --rocker-track-on: rgb(167, 242, 187);
+  --rocker-bg-clr: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0;
+  border: none;
+  pointer-events: none;
+  outline: none;
+  font: inherit;
+  background-color: transparent;
+}
+.switch__label {
+  font-size: 1rem;
+  padding-right: 0.5rem;
+}
+.switch__text {
+  font-size: 1rem;
+  padding-left: 0.5rem;
+}
+.switch__rocker {
+  display: inline-block;
+  position: relative;
+  background-color: var(--rocker-track);
+  border-radius: 1rem;
+  height: 1rem;
+  vertical-align: text-bottom;
+  width: 3rem;
+  cursor: pointer;
+  pointer-events: all;
+}
+.switch__rocker::before {
+  content: "";
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background-color: var(--rocker-bg-clr);
+  position: absolute;
+  left: -0.125rem;
+  top: -0.125rem;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+}
+.switch:focus-within .switch__rocker {
+  outline: 2px solid var(--focus-clr);
+  outline-offset: 0.3rem;
+}
+.switch__rocker:hover {
+  outline: 2px solid var(--focus-clr);
+  outline-offset: 0.3rem;
+}
+.switch[aria-checked=true] > .switch__rocker::before {
+  left: 1.875rem;
+}
+.switch[aria-checked=true] > .switch__rocker {
+  background-color: var(--rocker-track-on);
+  transition: background-color var(--animation-ms) linear;
+}
+.switch[aria-checked=false] > .switch__rocker {
+  transition: background-color var(--animation-ms) linear;
+}
+.switch[aria-disabled=true] {
+  filter: brightness(75%);
+}
+.switch[aria-disabled=true] > .switch__rocker {
+  cursor: not-allowed;
+}

@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, <span style="text-decoration:line-through">world!</span> Switch Component</h1>
+
+Welcome to your new app
+
+<p class="mt-4 mb-4">@_message</p>
+
+<p class="mb-4">
+    With both label and state text: <Switch SwitchState="_switchState" SwitchStateChanged="HandleSwitchChange" Label="Airplane mode:" OnText="Active" OffText="Inactive" Disabled="_switchDisabled" />
+</p>
+<p class="mb-4">
+    With only the label: <Switch @bind-SwitchState="_switchState" Label="Airplane mode:" Disabled="_switchDisabled" />
+</p>
+<p class="mb-4">
+    With only the state text: <Switch @bind-SwitchState="_switchState" Label="Airplane mode:" LabelVisible="false" OnText="Active" OffText="Inactive" Disabled="_switchDisabled" />
+</p>
+<p class="mb-4">
+    With only the switch: <Switch @bind-SwitchState="_switchState" Label="Airplane mode:" LabelVisible="false" Disabled="_switchDisabled" />
+</p>
+<p class="mb-4">
+    <button class="btn btn-primary" @onclick="() => _switchDisabled = !_switchDisabled">Toggle Disabled State</button>
+</p>
+
+
+<ul style="display:flex; flex-direction:column; gap: 1rem;">
+    <li><kbd>Enter</kbd> Toggle switch between on and off.</li>
+    <li><kbd>Space</kbd> Toggle switch between on and off..</li>
+    <li><kbd>Tab</kbd> Move focus to switch as its in the page tab order.</li>
+</ul>
+
+@code {
+
+    private bool _switchState = false;
+    private bool _switchDisabled = false;
+    private string _message = String.Empty;
+
+    protected override void OnInitialized()
+    {
+        _message = $"The switch state is : {(_switchState ? "On" : "Off")}";
+    }
+    private void HandleSwitchChange(bool switchState)
+    {
+        _switchState = switchState;
+        _message = $"The switch state is : {(switchState ? "On" : "Off")}";
+    }
+
+
+}
