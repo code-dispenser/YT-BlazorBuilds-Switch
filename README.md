@@ -4,7 +4,7 @@
 
 This repository contains the solution from my YouTube video showing how to build an accessible switch component following the ARIA authoring practice guidelines for the Switch Pattern.
 
-YouTube video: Should be up late afternoon, will add the link when available.
+YouTube video: https://youtu.be/YxIFUI-tKjg
 
 Coffees welcomed : https://ko-fi.com/codedispenser
 
