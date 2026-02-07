@@ -13,6 +13,7 @@
         <span class="switch__text" aria-hidden="true">@(_switchState ? OnText : OffText)</span>
     }
 
+
 </button>
 
 @code {
@@ -44,5 +45,7 @@
         if (true == String.IsNullOrWhiteSpace(Label)) throw new ArgumentNullException(nameof(Label), "Label cannot be null, empty or whitespace");
         if (_switchState != SwitchState && false == Disabled) await RaiseOnSwitchStateChanged(SwitchState);
     }
+    protected override void OnInitialized()
 
+        => _switchState = SwitchState;
 }
